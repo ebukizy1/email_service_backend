@@ -7,7 +7,6 @@ FROM openjdk:17-jdk-slim
 COPY --from=build target/lending-protocol-0.0.1-SNAPSHOT.jar lending-protocol-0.0.1-SNAPSHOT.jar
 # Set the working directory inside the container
 # Expose the port that your Spring Boot application listens on
-EXPOSE 8080
 # Set the command to run your Spring Boot application when the container starts
 CMD ["java", "-jar", "lending-protocol-0.0.1-SNAPSHOT.jar"]
 
