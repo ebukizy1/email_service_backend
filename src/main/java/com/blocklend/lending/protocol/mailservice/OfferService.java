@@ -100,7 +100,28 @@ public EmailResponse rejectOffer(String  email){
     emailRequest.setHtmlContent(content);
     return  mailService.sendMail(emailRequest);
 }
-
+public EmailResponse loanRepaid(String email){
+    String userName = getExtractUserName(email);
+    Recipient recipient = new Recipient();
+    recipient.setEmail(email);
+    recipient.setName(userName);
+    final Context context = new Context();
+    assert userName != null;
+    context.setVariables(	//these are the placeholders in the email template
+            Map.of(
+                    "fullName", userName
+            )
+    );
+    final String content = templateEngine.process("repay_loan", context);
+    List<Recipient> recipients = List.of(
+            recipient
+    );
+    EmailRequest emailRequest = new EmailRequest();
+    emailRequest.setRecipients(recipients);
+    emailRequest.setSubject("Loan Repaid");
+    emailRequest.setHtmlContent(content);
+    return  mailService.sendMail(emailRequest);
+}
 
 
 

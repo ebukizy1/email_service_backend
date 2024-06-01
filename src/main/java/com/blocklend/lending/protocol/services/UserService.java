@@ -17,4 +17,5 @@ public interface UserService {
    EmailResponse sendOffer(OfferRequest offerRequest);
     EmailResponse rejectOffer(String email);
     EmailResponse serviceLoan(String email);
+    EmailResponse loanRepaid(String email);
 }

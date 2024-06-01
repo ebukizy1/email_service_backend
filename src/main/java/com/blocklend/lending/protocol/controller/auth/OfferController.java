@@ -35,6 +35,11 @@ public class OfferController {
             return ResponseEntity.ok(userService.serviceLoan(email));
         }
 
+        @PostMapping("/loanRepaid")
+        public ResponseEntity<EmailResponse> repayLoan(String email) {
+            return ResponseEntity.ok(userService.loanRepaid(email));
+        }
+
 
 
 }

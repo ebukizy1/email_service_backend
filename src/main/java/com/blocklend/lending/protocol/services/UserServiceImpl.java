@@ -91,6 +91,12 @@ public class UserServiceImpl implements UserService{
         return offerService.serviceLoanRequest(email);
     }
 
+    @Override
+    public EmailResponse loanRepaid(String email) {
+        findUserByUsername(email);
+        return offerService.loanRepaid(email);
+    }
+
 
     public User findUserByUsername(String email) {
         return userRepository.findByEmail(email).orElseThrow( ()-> new UserNotFoundException(" user not found"));
